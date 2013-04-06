@@ -16,7 +16,8 @@ class MainHandler(webapp2.RequestHandler):
     		self.redirect(loginUrl)
     		return
 
-
+		#query Employee for user.email
+		# if not found, render registration.html -> onSubmit redirect to /register_user
     	path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
         self.response.write(
         		template.render(path, {

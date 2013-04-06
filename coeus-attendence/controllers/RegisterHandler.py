@@ -20,7 +20,7 @@ class Employee(db.Model):
 
 
 
-class EmployeeHandler(webapp2.RequestHandler):
+class RegisterHandler(webapp2.RequestHandler):
 	def get(self):
 		user = users.get_current_user();
 		if user is None:
@@ -29,7 +29,7 @@ class EmployeeHandler(webapp2.RequestHandler):
 			return
 		else:
 			self.response.headers['Content-Type'] = 'text/plain'
-			self.response.out.write('Hello, ' + user.nickname())
+			self.response.out.write('Hello, [' + user.nickname()+']')
 		
 	
 #	def post(self):

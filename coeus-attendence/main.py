@@ -15,11 +15,11 @@
 # limitations under the License.
 #
 import webapp2
-from controllers import MainHandler, LeaveRequestHandler,EmployeeHandler
+from controllers import MainHandler, LeaveRequestHandler,RegisterHandler
 
 app = webapp2.WSGIApplication( [ 
 	('/', MainHandler),
 	('/request_leave.do', LeaveRequestHandler),
-	('/user',EmployeeHandler)
+	('/user',RegisterHandler)
  ], debug=True)
  
