@@ -24,7 +24,7 @@ class RegisterHandler(webapp2.RequestHandler):
 	def post(self):
 		employee = Employee()
 		employee.name = (cgi.escape(self.request.get('name')))
-		employee.email = (cgi.escape(self.request.get('email')))
+		employee.email = user.email()
 		employee.designation = (cgi.escape(self.request.get('designation')))
 		employee.phone = [(cgi.escape(self.request.get('phone1'))),(cgi.escape(self.request.get('phone2')))]
 		employee.address = [(cgi.escape(self.request.get('address1'))),(cgi.escape(self.request.get('address2')))]
