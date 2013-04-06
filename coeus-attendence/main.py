@@ -15,26 +15,8 @@
 # limitations under the License.
 #
 import webapp2
-import datetime
-from Modules import Leaves
+from controllers import MainHandler
 
-class MainHandler(webapp2.RequestHandler):
-	
-    def get(self):
-    	e = Leaves.Employee(name="zaki", email="zaki.shaheen@coeus-solutions.de")
-    	e.put()
+app = webapp2.WSGIApplication( [ ('/', MainHandler),
 
-    	e2 = Leaves.Employee(name="TL", email = "TL@coeus-solutions.de")
-    	e2.put()
-
-    	l = Leaves.Leave(parent=e)
-    	l.submissionDate = datetime.datetime.now().date()
-    	l.comments = "going home for marriage"
-    	l.leaveStatus = "pending"
-    	l.leaveApproverEmail = e2.email
-    	l.put()
-
-
-        self.response.write('It works!')
-
-app = webapp2.WSGIApplication( [ ('/*', MainHandler) ], debug=True)
+ ], debug=True)
