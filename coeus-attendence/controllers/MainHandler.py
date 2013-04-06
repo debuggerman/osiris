@@ -29,6 +29,6 @@ class MainHandler(webapp2.RequestHandler):
                 self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()}))
             else:
                 path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
-                self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()})) 
+                self.response.write(template.render(path,{'username':user.nickname(),'employee_email':user.email()})) 
 
 
