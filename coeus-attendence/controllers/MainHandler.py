@@ -25,7 +25,6 @@ class MainHandler(webapp2.RequestHandler):
             result = q.get()
 			
             if result is None:
-                self.response.out.write('NO User')
                 path =  os.path.join(os.path.dirname(__file__),'../views', 'register.html')
                 self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()}))
             else:
