@@ -14,22 +14,22 @@ from models.models import *
 class MainHandler(webapp2.RequestHandler):
 	
     def get(self): 
-    	user = users.get_current_user()
+        user = users.get_current_user()
 
-    	if user is None:
-    		loginUrl = users.create_login_url("/")
-    		self.redirect(loginUrl)
-    		return
-    	else:
-			q = Employee.gql("WHERE email =:email",email=user.email())
-			result = q.get()
+        if user is None:
+            loginUrl = users.create_login_url("/")
+            self.redirect(loginUrl)
+            return
+        else:
+            q = Employee.gql("WHERE email =:email",email=user.email())
+            result = q.get()
 			
-			if result is None:
-				self.response.out.write('NO User')
-				path =  os.path.join(os.path.dirname(__file__),'../views', 'register.html')
-				self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()}))
-			else:
-				path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
-                self.response.write(template.render(path,None))
-			
-    		
+            if result is None:
+                self.response.out.write('NO User')
+                path =  os.path.join(os.path.dirname(__file__),'../views', 'register.html')
+                self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()}))
+            else:
+                path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
+                self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()})) 
+
+

@@ -37,4 +37,5 @@ class RegisterHandler(webapp2.RequestHandler):
 		employee.NTN= (cgi.escape(self.request.get('ntn')))
 		employee.DRI = (cgi.escape(self.request.get('dri')))				
 		employee.put()
+		sleep(1)
 		self.redirect('/')
