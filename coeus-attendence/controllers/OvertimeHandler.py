@@ -4,6 +4,7 @@ from datetime import datetime
 from google.appengine.ext import webapp
 from google.appengine.api import users
 from google.appengine.ext.webapp import template
+from models import Employee
 from models import Overtime
 import webapp2
 
@@ -26,8 +27,12 @@ class OvertimeHandler(webapp2.RequestHandler):
 			loginUrl = users.create_login_url(self.request.path)
 			self.redirect(loginUrl)
 			return
-	
+			
+		q = Employee.gql("WHERE email =:email",email=user.email())
+		employee = q.get()
+        
 		overtime = Overtime()
+		overtime.employee=employee
 		overtime.projectName = self.request.get('name')
 		overtime.isApproved = False
 		overtime.approvedHours = float(self.request.get('hours'))
