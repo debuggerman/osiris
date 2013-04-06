@@ -47,12 +47,6 @@ class LeaveRequestHandler(webapp2.RequestHandler):
 			self.redirect(login_url)
 			return
 
-		#leaveStartDate
-		#leaveEndDate
-		#leaveType
-		#leaveApproverEmail
-		#leaveContactNumber
-		#leaveAddressOnLeave
 		leaveStartDate = parse(self.request.get("leaveStartDate"))
 		leaveEndDate = parse(self.request.get("leaveEndDate"))
 		leaveType = self.request.get("leaveType")

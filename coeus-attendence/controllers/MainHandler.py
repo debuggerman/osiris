@@ -21,8 +21,6 @@ class MainHandler(webapp2.RequestHandler):
     		self.redirect(loginUrl)
     		return
     	else:
-    	
-			self.response.out.write('in else')
 			q = Employee.gql("WHERE email =:email",email=user.email())
 			result = q.get()
 			
@@ -31,7 +29,7 @@ class MainHandler(webapp2.RequestHandler):
 				path =  os.path.join(os.path.dirname(__file__),'../views', 'register.html')
 				self.response.write(template.render(path,{'employee_name':user.nickname(),'employee_email':user.email()}))
 			else:
-				self.response.out.write(result.name)
-				self.redirect('/')
+				path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
+                self.response.write(template.render(path,None))
 			
     		
