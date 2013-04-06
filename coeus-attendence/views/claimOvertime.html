@@ -1,0 +1,41 @@
+<html>
+    <body>
+    	<form action="/submit_overtime.do" method="post">
+            <div><h1>Overtime</h1></div>
+            <div>
+            	<table cellpadding="1" cellspacing="1">
+            		<tr>
+                		<td>Project Name</td>
+                		<td><input name="name" type="text" value=""></td>
+            		</tr>
+            		<tr>
+                		<td>Extra Hours</td>
+                		<td><input name="hours" type="text" value=""></td>
+            		</tr>
+            		<tr>
+                		<td>Month</td>
+                		<td>
+                			<SELECT name="month">
+                            	<OPTION value="January">January</OPTION>
+                            	<OPTION value="February">February</OPTION>
+                            	<OPTION value="March">March</OPTION>
+                            	<OPTION value="April">April</OPTION>
+                            	<OPTION value="May">May</OPTION>
+                            	<OPTION value="June">June</OPTION>
+                            	<OPTION value="July">July</OPTION>
+                            	<OPTION value="August">August</OPTION>
+                            	<OPTION value="September">September</OPTION>
+                            	<OPTION value="October">October</OPTION>
+                            	<OPTION value="November">November</OPTION>
+                            	<OPTION value="December">December</OPTION>
+                        	</SELECT>
+                        </td>
+            		</tr>
+            	</table>
+            </div>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+		</form>
+    </body>
+</html>
