@@ -20,6 +20,6 @@ from controllers import MainHandler, LeaveRequestHandler,RegisterHandler
 app = webapp2.WSGIApplication( [ 
 	('/', MainHandler),
 	('/request_leave.do', LeaveRequestHandler),
-	('/user',RegisterHandler)
+	('/employee_register.do',RegisterHandler)
  ], debug=True)
  
