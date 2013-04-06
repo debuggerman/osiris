@@ -14,7 +14,7 @@
   </script>
 </head>
 <body>
-	
+	<h1> Leave Request Form </h1>
 	<form action="request_leave.do" method="post">
 		Submission Date: {{current_date}} <br>
 		Start Date: <input type = "text" name="leaveStartDate" id="startdatepicker">	<br>
@@ -23,7 +23,7 @@
 		<input type="radio" name="leaveType" value="sick">Sick Leave</input><br>
 		<input type="radio" name="leaveType" value="annual">	Annual Leave</input><br>	
 		<input type="radio" name="leaveType" value="casual">	Casual Leave</input><br>
-		Approver: <input type="leaveApproverEmail" name="approver"> <br>
+		Approver: <input type="leaveApproverEmail" name="leaveApproverEmail"> <br>
 		Contact Number: <input type="text" name="leaveContactNumber"> <br>
 		Address On Leave: <input type="text" name="leaveAddressOnLeave"> <br>
 		<input type="submit"><br>

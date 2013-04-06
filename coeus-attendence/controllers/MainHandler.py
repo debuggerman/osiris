@@ -15,7 +15,7 @@ class MainHandler(webapp2.RequestHandler):
     	user = users.get_current_user()
 
     	if user is None:
-    		loginUrl = users.create_login_url(self.request.path)
+    		loginUrl = users.create_login_url("/")
     		self.redirect(loginUrl)
     		return
     	else:

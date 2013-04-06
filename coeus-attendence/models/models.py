@@ -23,11 +23,17 @@ class Leave(db.Model):
 	leaveSubmissionDate = db.DateProperty()
 	leaveStartDate = db.DateProperty()
 	leaveEndDate = db.DateProperty()
-	leaveType = db.StringListProperty()
+	leaveType = db.StringProperty()
 	leaveApproverEmail = db.StringProperty()
 	comments = db.StringProperty()
 	contactNumber = db.StringProperty()
 	addressOnLeave = db.StringProperty()
 	approversComments = db.StringProperty()
 	leaveStatus = db.StringProperty()
+
+	def createApproveUrl(self, request):
+		return request.host_url + "/respond_leave.do/" + str(self.key().id())  + "/approve"
+
+	def createRejectUrl(self, request):
+		return request.host_url + "/respond_leave.do/"  + str(self.key().id())  + "/reject"
 

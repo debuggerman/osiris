@@ -8,6 +8,21 @@ import webapp2
 from models.models import *
 from dateutil.parser import *
 
+class LeaveResponseHandler(webapp2.RequestHandler):
+	def get(self, leave_id, method):
+
+		user = users.get_current_user()
+
+		if user is None:
+			loginUrl = users.create_login_url(self.request.path)
+			self.redirect(loginUrl)
+			return
+
+		path =  os.path.join(os.path.dirname(__file__),'../views', 'leaveRequestApproval.html')
+		self.response.write(template.render(path, {"method": method, "leave_id": leave_id}))
+
+
+
 class LeaveRequestHandler(webapp2.RequestHandler):
 
 	def get(self):
@@ -19,7 +34,7 @@ class LeaveRequestHandler(webapp2.RequestHandler):
 			return
 
 		path =  os.path.join(os.path.dirname(__file__),'../views', 'leaveRequest.html')
-		self.response.write(template.render(path, {"current_date": datetime.now()}))
+		self.response.write(template.render(path, {"current_date": datetime.datetime.now()}))
 
 
 
@@ -46,6 +61,8 @@ class LeaveRequestHandler(webapp2.RequestHandler):
 		leaveContactNumber = self.request.get("leaveContactNumber")
 		leaveStatus = "pending"
 
+		#validate approverEmail
+
 		leave = Leave()
 		leave.leaveSubmissionDate = datetime.datetime.now().date()
 		leave.leaveStartDate = leaveStartDate.date()
@@ -55,11 +72,24 @@ class LeaveRequestHandler(webapp2.RequestHandler):
 		leave.leaveStatus = leaveStatus
 		leave.put()
 
-		self.response.write("Submited")
-		# message = mail.EmailMessage()
-		# message.sender = user.email()
-		# message.to = to_addr
-		# message.body = """
-		# 	Someone requires your approval for the leaves
-		# """
-		# message.send()
+		template_path =  os.path.join(os.path.dirname(__file__),'../views', 'leaveRequestEmail.html')
+
+		approverName = "Approver"
+		senderName = "SenderName"
+		leaveType = "Sick Leave"
+		leaveDays = "5"
+
+		message = mail.EmailMessage()
+		message.sender = user.email()
+		message.to = leaveApproverEmail
+		message.body = template.render(template_path, {
+			"approverName": approverName,
+			"senderName": senderName,
+			"leaveType": leaveType,
+			"days": leaveDays,
+			"approveUrl": leave.createApproveUrl(self.request),
+			"rejectUrl": leave.createRejectUrl(self.request)})
+
+		#message.send()
+		#self.redirect("/")
+		self.response.write(message.body)
