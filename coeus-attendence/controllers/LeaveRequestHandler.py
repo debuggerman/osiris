@@ -82,7 +82,8 @@ class LeaveRequestHandler(webapp2.RequestHandler):
 			"leaveType": leaveType,
 			"days": leaveDays,
 			"approveUrl": leave.createApproveUrl(self.request),
-			"rejectUrl": leave.createRejectUrl(self.request)})
+			"rejectUrl": leave.createRejectUrl(self.request),
+			"dashboardUrl":self.request.host_url})
 
 		#message.send()
 		#self.redirect("/")
