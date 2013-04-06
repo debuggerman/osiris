@@ -1,5 +1,32 @@
 <html>
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#startdatepicker" ).datepicker();
+    $( "#enddatepicker" ).datepicker();
+  });
+  </script>
+</head>
 <body>
-	Leave Request
+	
+	<form action="request_leave.do" method="post">
+		Submission Date: {{current_date}} <br>
+		Start Date: <input type = "text" name="leaveStartDate" id="startdatepicker">	<br>
+		End Date: <input type = "text" name="leaveEndDate" id="enddatepicker">	<br>
+		Type: <br>
+		<input type="radio" name="leaveType" value="sick">Sick Leave</input><br>
+		<input type="radio" name="leaveType" value="annual">	Annual Leave</input><br>	
+		<input type="radio" name="leaveType" value="casual">	Casual Leave</input><br>
+		Approver: <input type="leaveApproverEmail" name="approver"> <br>
+		Contact Number: <input type="text" name="leaveContactNumber"> <br>
+		Address On Leave: <input type="text" name="leaveAddressOnLeave"> <br>
+		<input type="submit"><br>
+	</form>
 </body>
 </html>
