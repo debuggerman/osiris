@@ -5,8 +5,19 @@ from google.appengine.api import users
 from google.appengine.api import mail
 
 class Employee(db.Model):
+	id = db.IntegerProperty()
 	name = db.StringProperty(required=True)
-	email = db.StringProperty(required=True)
+	email = db.EmailProperty(required=True)
+	designation = db.StringProperty(required=True)
+	phone = db.StringListProperty(required=True)
+	address = db.StringListProperty(required=True)
+	joiningDate = db.DateProperty()
+	CNIC = db.IntegerProperty(required=True)
+	DOB = db.DateProperty()
+	bloodGroup = db.StringProperty()
+	NTN = db.IntegerProperty()
+	DRI =db.UserProperty()
+
 
 class Leave(db.Model):
 	leaveSubmissionDate = db.DateProperty()
