@@ -15,10 +15,20 @@
 # limitations under the License.
 #
 import webapp2
+import datetime
+from Modules import Leaves
 
 class MainHandler(webapp2.RequestHandler):
 	
     def get(self):
+    	e = Leaves.Employee(name="zaki", email="zaki.shaheen@coeus-solutions.de")
+    	e.put()
+
+    	l = Leaves.Leave(parent=e)
+    	l.submissionDate = datetime.datetime.now().date()
+    	l.put()
+
+
         self.response.write('It works!')
 
 app = webapp2.WSGIApplication( [ ('/*', MainHandler) ], debug=True)
