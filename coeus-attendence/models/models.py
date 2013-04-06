@@ -12,11 +12,11 @@ class Employee(db.Model):
 	phone = db.StringListProperty()
 	address = db.StringListProperty()
 	joiningDate = db.DateProperty()
-	CNIC = db.IntegerProperty()
+	CNIC = db.StringProperty()
 	DOB = db.DateProperty()
 	bloodGroup = db.StringProperty()
-	NTN = db.IntegerProperty()
-	DRI =db.UserProperty()
+	NTN = db.StringProperty()
+	DRI = db.EmailProperty()
 
 
 class Leave(db.Model):
