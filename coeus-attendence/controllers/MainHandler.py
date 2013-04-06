@@ -39,7 +39,7 @@ class MainHandler(webapp2.RequestHandler):
                
 
                 path =  os.path.join(os.path.dirname(__file__),'../views', 'index.html')
-                self.response.write(template.render(path,{'username':user.nickname(),'employee_email':user.email(), 'user': users.get_current_user().nickname(), 'button_text':button_text}))
+                self.response.write(template.render(path,{'logout_url':users.create_logout_url('/'),'username':user.nickname(),'employee_email':user.email(), 'user': users.get_current_user().nickname(), 'button_text':button_text}))
 
     def post(self):
         
