@@ -22,5 +22,6 @@ app = webapp2.WSGIApplication( [
 	webapp2.Route(r'/respond_leave.do/<leave_id:\d+>/<method:\w+>', handler=LeaveResponseHandler, name='leaveResponse'),
 	webapp2.Route('/employee_register.do', handler=RegisterHandler, name="register"),
 	webapp2.Route('/request_leave.do?', handler=LeaveRequestHandler, name="requestLeave"),
+	webapp2.Route('/register.do?', handler=RegisterHandler, name="register"),	
  ], debug=True)
  
