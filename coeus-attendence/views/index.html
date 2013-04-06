@@ -6,5 +6,16 @@
 		<a href={{logout_url}}>logout</a>
 		<br />
 		<a href="claim_overtime.do">Claim Overtime</a>
+        
+        <b>Welcome {{ user }}</b>
+        
+        <form action="/" method="post">
+            {% if button_text = "Check out"  %}
+            Comment:
+            <div><textarea name="comment" rows="3" cols="60"></textarea></div>
+            {% endif %}
+            <input type='submit' value='{{ button_text }}'></input>
+        </form>
+        
 	</body>
 </html>

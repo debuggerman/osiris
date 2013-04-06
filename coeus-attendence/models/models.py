@@ -37,3 +37,10 @@ class Leave(db.Model):
 	def createRejectUrl(self, request):
 		return request.host_url + "/respond_leave.do/"  + str(self.key().id())  + "/reject"
 
+class TimeLog(db.Model):
+    user = db.StringProperty()
+    submissionDate = db.DateProperty()
+    checkinTime = db.DateTimeProperty()
+    checkoutTime = db.DateTimeProperty()
+    checkoutComment = db.StringProperty(multiline=True)
+
