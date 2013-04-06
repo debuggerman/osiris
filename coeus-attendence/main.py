@@ -24,8 +24,14 @@ class MainHandler(webapp2.RequestHandler):
     	e = Leaves.Employee(name="zaki", email="zaki.shaheen@coeus-solutions.de")
     	e.put()
 
+    	e2 = Leaves.Employee(name="TL", email = "TL@coeus-solutions.de")
+    	e2.put()
+
     	l = Leaves.Leave(parent=e)
     	l.submissionDate = datetime.datetime.now().date()
+    	l.comments = "going home for marriage"
+    	l.leaveStatus = "pending"
+    	l.leaveApproverEmail = e2.email
     	l.put()
 
 
