@@ -16,7 +16,7 @@
 #
 import webapp2
 
-from controllers import MainHandler, LeaveRequestHandler, RegisterHandler, LeaveResponseHandler, OvertimeHandler
+from controllers import MainHandler, LeaveRequestHandler, RegisterHandler, LeaveResponseHandler, OvertimeHandler, OvertimeListHandler
 
 app = webapp2.WSGIApplication([ 
 	webapp2.Route(r'/', handler=MainHandler, name='home'),
@@ -25,6 +25,7 @@ app = webapp2.WSGIApplication([
 	webapp2.Route(r'/request_leave.do', handler=LeaveRequestHandler, name="requestLeave"),
 	webapp2.Route(r'/register.do', handler=RegisterHandler, name="register"),	
 	webapp2.Route(r'/claim_overtime.do', handler=OvertimeHandler, name="Claim Overtime"),	
-	webapp2.Route(r'/submit_overtime.do', handler=OvertimeHandler, name="Submit Overtime")	
+	webapp2.Route(r'/submit_overtime.do', handler=OvertimeHandler, name="Submit Overtime"),
+	webapp2.Route(r'/list_overtime.do', handler=OvertimeListHandler, name="See Overtime")
  ], debug=True)
  
